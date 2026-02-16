@@ -2,6 +2,8 @@
 
 **Dollar Birr Tracker** is a dedicated real-time dashboard designed to bridge the information gap in the currency market. It allows users to monitor the fluctuating exchange rate between the **United States Dollar (USD)** and the **Ethiopian Birr (ETB)** instantly.
 
+https://besuhosiso.github.io/dollar-birr-tracker/
+
 This project was built to provide clarity by comparing live market trends against official banking rates in a single, modern interface.
 
 ## 📱 Project Preview
