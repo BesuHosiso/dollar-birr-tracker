@@ -1,0 +1,232 @@
+/* Extracted and formatted CSS */
+
+/* Root variables */
+:root {
+  --bg: #071025;
+  --card: #071428; /* dark surface for cards */
+  --muted: #9ca3af; /* secondary text */
+  --primary: #06b6d4;
+  --accent: #10b981;
+  --text: #e6eef6; /* primary text on dark bg */
+}
+
+/* Global */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 32px; }
+
+/* Header */
+.header-brand {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+.badge { width: 10px; height: 10px; background: var(--primary); border-radius: 50%; display: inline-block; }
+header p { margin: 0; color: var(--muted); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; }
+
+/* Hero */
+.hero { text-align: center; padding: 40px 0; }
+.kicker { color: #94a3b8; text-transform: uppercase; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; margin-bottom: 8px; }
+.rate { font-size: 56px; color: #fff; font-weight: 800; margin: 0; }
+.rate .value { color: var(--primary); }
+.meta { margin-top: 12px; color: #9ca3af; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; }
+
+/* Grid / Cards */
+.grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 16px; }
+@media (min-width: 900px) {
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+}
+.card { background: var(--card); border-radius: 12px; padding: 20px; border: 1px solid rgba(255,255,255,0.04); box-shadow: 0 1px 4px rgba(2,6,23,0.6); color: var(--text); }
+.card h3 { margin: 0 0 12px; font-size: 18px; }
+.stat-title { font-size: 12px; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+.stat-value { font-size: 24px; font-weight: 800; color: var(--text); }
+.space-between { display: flex; justify-content: space-between; align-items: center; }
+
+/* Card header alignment and spacing for elements missing explicit classes */
+.card > div:first-child { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.card { display: flex; flex-direction: column; }
+.card .stat-value span { font-size: 12px; color: var(--muted); font-weight: 600; margin-left: 6px; }
+
+/* Chart */
+.chart-area {
+  min-height: 340px; /* give more vertical room so the graph fills bottom */
+  position: relative;
+  padding: 48px 12px 44px; /* more top padding for controls, more bottom padding for legend */
+  background: linear-gradient(180deg, rgba(2,6,23,0.0), rgba(2,6,23,0.06));
+  border-radius: 8px;
+}
+.chart-area svg { width: 100%; height: 240px; display: block; margin: 0; }
+.chart-legend {
+  position: absolute;
+  bottom: 12px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 11px;
+  z-index: 3;
+  pointer-events: none;
+  text-shadow: 0 1px 0 rgba(2,6,23,0.6);
+}
+.chart-legend .chip { padding: 2px 6px; border-radius: 6px; background: rgba(2,6,23,0.18); }
+.panel { margin-top: 2em; }
+.panel-header h3 { margin: 0; }
+.trend-controls { display: flex; gap: 6px; }
+.trend-controls { z-index: 5; }
+.trend-controls button { padding: 6px 10px; border-radius: 6px; border: none; background: transparent; cursor: pointer; color: var(--text); border: 1px solid transparent; }
+.trend-controls button:first-child { background: rgba(6,182,212,0.12); color: var(--primary); font-weight: 700; }
+.trend-controls button:hover, .trend-controls button:focus { background: rgba(255,255,255,0.02); outline: none; }
+
+/* Position the controls on top of the chart */
+.chart-controls { position: absolute; top: 12px; right: 12px; z-index: 6; pointer-events: auto; }
+.chart-controls .trend-controls { background: rgba(2,6,23,0.14); padding: 6px; border-radius: 8px; box-shadow: 0 4px 14px rgba(2,6,23,0.6); }
+.chart-controls .trend-controls button { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.04); }
+.chart-controls .trend-controls button:first-child { background: rgba(6,182,212,0.18); }
+
+/* Provide a small neutral style for control buttons that lacked styling */
+.trend-controls button + button { opacity: 0.95; }
+
+/* Converter */
+.converter { display: flex; flex-direction: column; gap: 10px; margin-block: 3em; }
+.converter h3 { margin: 0 0 6px; }
+.converter .label { font-size: 11px; display: block; color: var(--muted); font-weight: 700; text-transform: uppercase; margin: 0; }
+.converter input[type="number"], .converter input[type="text"] { width: 100%; padding: 30px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.02); color: var(--text); font-size: 18px; font-weight: 700; }
+.swap-wrap { display: flex; justify-content: center; margin: 8px 0; }
+.swap-wrap button { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.04); color: var(--text); font-size: 18px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.swap-wrap button:hover { background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+.small { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; margin-top: 12px; }
+.btn-primary { background: var(--primary); color: #071025; border: none; padding: 12px; border-radius: 10px; width: 100%; font-weight: 800; cursor: pointer; }
+
+/* Small spacing fixes for grid rows */
+.grid.cols-3 .card { min-height: 96px; }
+.grid.cols-2 .card { min-height: 120px; }
+
+/* Ensure converter card contents are aligned and don't overflow */
+.card.converter { display: flex; flex-direction: column; gap: 14px; padding: 28px; min-height: 260px; justify-content: space-between; }
+.card.converter .small { margin-top: 6px; }
+
+@media (max-width: 899px) {
+  .card.converter { margin-block-end: 1em; }
+}
+
+/* When the main grid stacks on small screens, make converter appear under the chart with consistent spacing */
+@media (max-width: 899px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .chart-area svg { height: 200px; }
+}
+
+/* Panel header layout */
+.panel-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+.panel-header h3 { margin: 0; }
+
+/* Ensure aside uses full width within the grid cell and stays visually balanced */
+aside { width: 100%; }
+
+/* Improve contrast for lighter elements inside cards */
+.card .kicker, .card .small, .card .stat-title { color: var(--muted); }
+
+/* Main layout: chart + converter */
+.main-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+@media (min-width: 900px) {
+  /* Give converter a fixed comfortable width while letting chart take remaining space */
+  .main-grid { grid-template-columns: 1fr 380px; align-items: start; }
+}
+
+/* Rates */
+.rate-row { display: flex; justify-content: space-between; }
+
+/* Utility */
+.flex { display: flex; align-items: center; }
+.center { text-align: center; }
+.insight p { color: #94a3b8; }
+footer { margin-top: 40px; text-align: center; color: #94a3b8; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; }
+
+/* Icons */
+.icon { width: 18px; height: 18px; display: inline-block; vertical-align: middle; color: var(--muted); }
+.icon-lg { width: 20px; height: 20px; }
+.icon-accent { color: var(--primary); }
+
+/* Market insight and bank rates styling */
+.card.insight h4 { display: flex; align-items: center; gap: 10px; font-size: 16px; margin: 1.3em 0 8px; }
+.card.insight h4 .icon { width: 20px; height: 20px; color: var(--primary); }
+.card.insight p { margin: 0; color: #9aa6b6; line-height: 1.6; font-size: 14px; }
+
+.bank-list { margin-top: 12px; }
+
+.bank-list .bank-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 0;
+}
+.bank-list .bank-row + .bank-row {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 14px;
+  margin-top: 8px;
+}
+.bank-list .bank-row span { color: var(--muted); font-weight: 600; font-size: 14px; }
+.bank-list .bank-row strong { color: var(--text); font-weight: 800; font-size: 14px; min-width: 72px; text-align: right; }
+
+/* make sure the insight paragraph has breathing room above actions */
+.card.insight p { margin: 0 0 12px 0; }
+
+/* Actions inside Market Insight */
+.insight-actions {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+}
+.insight-actions .btn-primary {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  min-height: 40px;
+  font-weight: 800;
+  width: 100%;
+}
+.insight-actions .btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text);
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  min-height: 40px;
+}
+.insight-actions .btn-outline:hover { background: rgba(255,255,255,0.02); }
+.insight-actions .chip {
+  background: rgba(16,185,129,0.12);
+  color: var(--accent);
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 599px) {
+  .insight-actions { grid-template-columns: 1fr; }
+  .insight-actions .btn-outline, .insight-actions .chip { width: auto; }
+  .insight-actions .chip { justify-self: start; }
+}
