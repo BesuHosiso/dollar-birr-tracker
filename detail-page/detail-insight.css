@@ -1,0 +1,237 @@
+/* Variables */
+:root {
+  --navy-dark: #0B1120;
+  --card-bg: #111827;
+  --accent-cyan: #00C2D1;
+  --accent-green: #00E676;
+  --muted-gray: #9CA3AF;
+  --border-subtle: rgba(255,255,255,0.05);
+}
+
+/* Base styles */
+html.dark {
+  background-color: var(--navy-dark);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--navy-dark);
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.custom-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* Layout helpers */
+.header {
+  margin-bottom: 32px; /* mb-8 */
+}
+
+.vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.indicators-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .indicators-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Typography & components */
+.back-link {
+  color: var(--muted-gray);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.back-link:hover {
+  color: #FFFFFF;
+}
+
+.main-title {
+  font-size: 1.875rem; /* 3xl */
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 2.25rem; /* 4xl */
+  }
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.25rem; /* xl */
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.overview-text {
+  color: var(--muted-gray);
+  line-height: 1.75;
+  max-width: 64rem; /* 5xl */
+}
+
+.card-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-label {
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 700;
+  color: var(--muted-gray);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.card-value {
+  font-size: 1.875rem; /* 3xl */
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.card-value.accent-green {
+  color: var(--accent-green);
+}
+
+.card-value-range {
+  font-size: 1.5rem; /* 2xl */
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .card-value-range {
+    font-size: 1.875rem; /* 3xl */
+  }
+}
+
+.card-note {
+  font-size: 0.875rem; /* sm */
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
+.card-note.accent-cyan {
+  color: var(--accent-cyan);
+}
+.card-note.muted-gray {
+  color: var(--muted-gray);
+}
+
+.market-drivers {
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .market-drivers {
+    max-width: 40rem; /* md:max-w-2xl */
+  }
+  .market-drivers .section-title {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.factors {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.factors li {
+  margin-bottom: 1.25rem; /* space-y-5 */
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.factors li span,
+.factor-dot {
+  margin-top: 0.5rem;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--accent-cyan);
+  box-shadow: 0 0 8px rgba(0,194,209,0.6);
+  flex-shrink: 0;
+}
+
+.range-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.factors li p {
+  color: var(--muted-gray);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.footer {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+.footer p {
+  font-size: 0.625rem; /* 10px */
+  color: var(--muted-gray);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Icon helpers */
+.icon-back,
+.icon-info {
+  height: 1rem;
+  width: 1rem;
+  color: currentColor;
+}
+.icon-info {
+  color: var(--accent-cyan);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.5s;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
