@@ -6,7 +6,7 @@ Dollar Birr Tracker is a dedicated real-time dashboard designed to bridge the in
 
 ## 📱 Project Preview
 
-![Dollar Birr Tracker Dashboard](./screencapture-127-0-0-1-5500-code-html-2026-02-16-06_30_46.png)
+![Dollar Birr Tracker Dashboard](./dollar-birr-tracker.png)
 
 ## 🔥 Key Features
 
