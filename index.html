@@ -1,5 +1,4 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -7,89 +6,82 @@
     <title>Dollar Birr Tracker | Premium Fintech Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="code.css">
+  <!-- ApexCharts library for market trend graph -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  
   </head>
   <body>
     <div class="container">
       <header>
-        <div class="header-brand">
+        <div class="header-brand hidden">
           <span class="badge" aria-hidden="true"></span>
           <h1>Dollar Birr Tracker</h1>
         </div>
-        <p>Real-Time Market Data</p>
       </header>
 
       <main>
-        <section class="hero">
+        <section class="hero hidden">
           <div class="kicker">Live Exchange Rate</div>
-          <h2 class="rate">1 USD = <span class="value">157.42</span> ETB</h2>
+          <h2 class="rate">1 USD = <span class="value">*****</span> ETB</h2>
           <div class="meta">
             <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-            <div>Last updated: Just now</div>
+            <div class="time-update">Last updated: February 19, 2026</div>
           </div>
         </section>
 
-        <section class="grid cols-3">
-          <div class="card">
+        <section class="grid cols-3 stagger">
+          <div class="card hidden">
             <div>
               <div class="stat-title">Daily High</div>
               <svg class="icon icon-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
             </div>
-            <div class="stat-value">158.10<span>ETB</span>
-            </div>
+            <div class="stat-value high-value">189.35<span>ETB</span></div>
           </div>
-          <div class="card">
+          <div class="card hidden">
             <div class="space-between">
               <div class="stat-title">Daily Low</div>
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>
             </div>
-            <div class="stat-value">156.90<span>ETB</span>
+            <div class="stat-value low-value">187.87<span>ETB</span>
             </div>
           </div>
-          <div class="card">
+          <div class="card hidden">
             <div class="space-between">
               <div class="stat-title">24h Change</div>
-              <div>+0.45%</div>
+              <div class="daily-percent">+0.23%</div>
             </div>
-            <div class="stat-value">+0.72<span>ETB</span>
+            <div class="stat-value change-value">+0.43<span>ETB</span>
             </div>
           </div>
         </section>
 
-        <div class="main-grid">
+        <div class="main-grid stagger">
           <div class="panel">
-            <div class="panel-header">
-              <h3>Market Trend</h3>
-            </div>
-            <div class="chart-area card">
+            <div class="chart-area card hidden">
+              <div class="panel-header">
+                <h3>Market Trend</h3>
+              </div>
               <div class="chart-controls">
-                <div class="trend-controls">
-                  <button>1H</button>
-                  <button>24H</button>
-                  <button>7D</button>
-                  <button>1M</button>
-                </div>
               </div>
-              <svg preserveAspectRatio="none" viewBox="0 0 800 200"><path d="M0,150 C100,160 200,80 300,100 C400,120 500,40 600,60 C700,80 800,20 800,20" fill="none" stroke="#20d3ee" stroke-width="3"></path><circle cx="800" cy="20" fill="#20d3ee" r="4"></circle></svg>
-              <div class="chart-legend">
-                <span>08:00 AM</span>
-                <span>12:00 PM</span>
-                <span>04:00 PM</span>
-                <span>08:00 PM</span>
-                <span>NOW</span>
+              <!-- apex chart container -->
+              <div class="area-chart">
+                <div class="grid"></div>
+                <!-- ApexCharts will render the SVG here -->
               </div>
+              <!-- optional legend could be managed by Apex if needed -->
             </div>
           </div>
 
           <aside>
-            <div class="card converter">
+            <div class="card converter hidden">
               <h3>Quick Converter</h3>
               <label class="label">US Dollar (USD)</label>
-              <input type="number" value="1000" aria-label="USD amount" />
+              <input type="number" value="10" aria-label="USD amount" id="converterInput">
               <div class="swap-wrap">
                   <button aria-label="Swap currencies">↑↓</button>
                 </div>
               <label class="label">Ethiopian Birr (ETB)</label>
-              <input type="text" value="157,420.00" readonly aria-readonly="true"/>
+              <div class="etb-value" aria-live="polite" id="converterOutput">1,878.70</div>
               <!-- <div>
                 <button class="btn-primary">Swap Currencie</button>
               </div> -->
@@ -97,41 +89,44 @@
           </aside>
         </div>
 
-        <section class="grid cols-2">
-          <div class="card insight">
+        <section class="grid cols-2 stagger">
+          <div class="card insight hidden">
             <h4><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>Market Insight</h4>
             <p>The Ethiopian Birr has shown a slight stabilization over the last 4 hours after early morning volatility. Major commercial bank rates remain steady, while the market mid-point shows a bullish trend for USD.</p>
             <div class="insight-actions">
-              <button class="btn-primary">View Details</button>
+              <button class="btn-primary"><a href="detail-page/detail-insight.html" style="text-decoration: none; color: inherit;">View Details</a></button>
               <button class="btn-outline">Share</button>
-              <div class="chip">Bullish</div>
             </div>
           </div>
-          <div class="card">
+          <div class="card hidden">
             <h4>
               <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21v-13l9-6 9 6v13"></path><path d="M9 10v11"></path><path d="M15 10v11"></path></svg>Official Bank Rates
             </h4>
             <div class="bank-list">
               <div class="bank-row">
                 <span>Commercial Bank of Ethiopia</span>
-                <strong>115.42</strong>
+                <strong>156.06</strong>
               </div>
               <div class="bank-row">
                 <span>Awash Bank</span>
-                <strong>116.10</strong>
+                <strong>156.24</strong>
               </div>
               <div class="bank-row">
-                <span>Dashen Bank</span>
-                <strong>115.95</strong>
+                <span>TeleBirr</span>
+                <strong>155.42</strong>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <footer>
-        © 2024 Dollar Birr Tracker • Financial Data is for Information Only
+      <footer class="footer hidden">
+        <p>
+          © 2024 DOLLAR BIRR TRACKER • BUILT BY BESU HOSISO
+        
+        </p>
       </footer>
     </div>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
