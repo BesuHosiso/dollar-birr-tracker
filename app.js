@@ -2,7 +2,7 @@ function updateDate() {
     const updateTime = document.querySelector(".time-update");
 
 const d = new Date();
-const day = String(d.getDate() + 1).padStart(2, '0');
+const day = String(d.getDate()).padStart(2, '0');
 const month = String(d.getMonth() + 1).padStart(2, '0');
 const year = d.getFullYear();
 let monthName;
@@ -264,3 +264,4 @@ function renderChartWithExchangeRate() {
 const valueInEtb = document.getElementsByClassName("value");
 //  .......
   
+
